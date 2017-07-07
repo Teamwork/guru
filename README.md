@@ -4,8 +4,8 @@
 
 The httperr package provides error-handling facilities for use with HTTP-centric
 Go applications, such as HTTP servers and client libraries. It is heavily
-influenced by, and intended for use along with the [github.com/pkg/errors](https://github.com/pkg/errors)
-package.
+influenced by, and intended for use along with the
+[github.com/pkg/errors](https://github.com/pkg/errors) package.
 
 The general use for the httperr package is to include an HTTP status code with
 errors. This allows a clean, decoupling between logic buried deeply inside
