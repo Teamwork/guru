@@ -1,0 +1,12 @@
+language: go
+go:
+  - 1.8.x
+
+before_install:
+  - ln -s $HOME/gopath/src/github.com/Teamwork $HOME/gopath/src/github.com/teamwork
+
+script:
+  - cd $HOME/gopath/src/github.com/teamwork/httperr
+  - ./bin/test
+  - ./bin/coverage
+  - ./bin/lint
