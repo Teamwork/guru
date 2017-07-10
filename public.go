@@ -27,7 +27,7 @@ func (e *publicError) Format(s fmt.State, verb rune) {
 		}
 		fallthrough
 	case 's', 'q':
-		io.WriteString(s, e.Error())
+		_, _ = io.WriteString(s, e.Error())
 	}
 }
 
