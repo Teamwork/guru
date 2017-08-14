@@ -1,2 +1,2 @@
 // Package httperr provides Go errors which encapsulate HTTP response codes.
-package httperr
+package httperr // import "github.com/Teamwork/httperr"
