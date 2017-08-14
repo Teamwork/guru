@@ -56,10 +56,10 @@ func TestStackTraceFormat(t *testing.T) {
 		stackTrace()[:2],
 		"%+v",
 		"\n" +
-			"github.com/teamwork/httperr.stackTrace\n" +
-			"\t.+/github.com/teamwork/httperr/stack_test.go:37\n" +
-			"github.com/teamwork/httperr.TestStackTraceFormat\n" +
-			"\t.+/github.com/teamwork/httperr/stack_test.go:56",
+			"github.com/Teamwork/httperr.stackTrace\n" +
+			"\t.+/github.com/Teamwork/httperr/stack_test.go:37\n" +
+			"github.com/Teamwork/httperr.TestStackTraceFormat\n" +
+			"\t.+/github.com/Teamwork/httperr/stack_test.go:56",
 	}, {
 		stackTrace()[:2],
 		"%#v",
