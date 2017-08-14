@@ -1,6 +1,12 @@
 language: go
 go:
   - 1.8.x
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:masterminds/glide'
+    packages:
+      - glide
 
 cache:
   directories:
@@ -11,15 +17,10 @@ notifications:
   email: false
 
 install:
-  # Compensate for poor naming decisions
-  - ln -s $HOME/gopath/src/github.com/Teamwork $HOME/gopath/src/github.com/teamwork
-  - mkdir -p $HOME/gopath/bin && curl https://glide.sh/get | sh
   - glide update
   - go get -u gopkg.in/alecthomas/gometalinter.v1 && gometalinter.v1 --install
 
 script:
-  - cd $HOME/gopath/src/github.com/teamwork/httperr
-
   - go test -race -cover -covermode=set -coverprofile=coverage.txt && bash <(curl -s https://codecov.io/bash)
   - gometalinter.v1 --config .linter_test.json
   - gometalinter.v1 --config .linter.json
