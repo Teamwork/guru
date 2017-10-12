@@ -35,6 +35,9 @@ var _ stackTracer = &withStatus{}
 
 func (e *withStatus) Cause() error    { return e.error }
 func (e *withStatus) StatusCode() int { return e.status }
+func (e withStatus) Format(s fmt.State, verb rune) {
+	fmt.Fprintf(s, "%v (%v)", e.error, e.status)
+}
 
 // New returns a new error message with stack trace, tied to the provided HTTP
 // status code.
@@ -100,6 +103,10 @@ var _ causer = &wrapped{}
 func (e *wrapped) Error() string   { return e.msg }
 func (e *wrapped) Cause() error    { return e.error }
 func (e *wrapped) StatusCode() int { return e.status }
+
+func (e wrapped) Format(s fmt.State, verb rune) {
+	fmt.Fprintf(s, "%v (%v)", e.error, e.status)
+}
 
 // Wrap returns an error annotating err with a stack trace, HTTP status code,
 // and the supplied message. If err is nil, Wrap returns nil.

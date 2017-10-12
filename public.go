@@ -18,7 +18,7 @@ var _ causer = &publicError{}
 func (e *publicError) Error() string { return e.msg }
 func (e *publicError) Cause() error  { return e.err }
 
-func (e *publicError) Format(s fmt.State, verb rune) {
+func (e publicError) Format(s fmt.State, verb rune) {
 	switch verb {
 	case 'v':
 		if s.Flag('+') {
