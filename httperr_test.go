@@ -18,7 +18,7 @@ func TestFormatWithStatus(t *testing.T) {
 				status: 42,
 			},
 			"%v",
-			"oh noes (42)",
+			"oh noes",
 		},
 		{
 			withStatus{
@@ -26,7 +26,7 @@ func TestFormatWithStatus(t *testing.T) {
 				status: 42,
 			},
 			"%#v",
-			"oh noes (42)",
+			"oh noes",
 		},
 		{
 			withStatus{
@@ -34,7 +34,7 @@ func TestFormatWithStatus(t *testing.T) {
 				status: 42,
 			},
 			"%s",
-			"oh noes (42)",
+			"oh noes",
 		},
 	}
 
@@ -60,7 +60,7 @@ func TestFormatWrapped(t *testing.T) {
 				status: 42,
 			},
 			"%v",
-			"oh noes (42)",
+			"oh noes",
 		},
 		{
 			wrapped{
@@ -68,7 +68,7 @@ func TestFormatWrapped(t *testing.T) {
 				status: 42,
 			},
 			"%#v",
-			"oh noes (42)",
+			"oh noes",
 		},
 		{
 			wrapped{
@@ -76,7 +76,7 @@ func TestFormatWrapped(t *testing.T) {
 				status: 42,
 			},
 			"%s",
-			"oh noes (42)",
+			"oh noes",
 		},
 	}
 
