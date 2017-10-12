@@ -1,0 +1,26 @@
+#!/bin/sh
+
+usage="Setup the environment for Travis"
+
+# Setup
+#######
+set -euC
+root="$(cd "$(dirname "$0")/.." && pwd)"
+. "$root/bin/start"
+
+# Run action
+############
+
+# Always use lower-case import paths.
+old=$(echo "$root" | sed 's,/Teamwork/.*,/Teamwork,')
+new=$(echo "$old" | sed 's,/Teamwork,/teamwork,')
+[ "$old" != "$new" ] && mv -v "$old" "$new"
+root="$new/$name"
+
+cd "$root"
+
+# Setup dep if it's used.
+if [ -f Gopkg.toml ]; then
+	go get -u github.com/golang/dep/cmd/dep
+	dep ensure
+fi
