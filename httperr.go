@@ -81,6 +81,8 @@ type wrapped struct {
 
 // StatusCode extracts the highest-level status code from the error, or the
 // errors it wraps.
+//
+// It will return 0 if the error is not a httperr, but a regular error.
 func StatusCode(err error) int {
 	for {
 		if sc, ok := err.(statusCoder); ok {

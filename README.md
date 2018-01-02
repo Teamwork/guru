@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/Teamwork/httperr.svg?branch=master)](https://travis-ci.org/Teamwork/httperr) [![Codecov](https://img.shields.io/codecov/c/github/Teamwork/httperr.svg?style=flat)](https://codecov.io/gh/Teamwork/httperr) [![GoDoc](https://godoc.org/github.com/Teamwork/httperr?status.svg)](http://godoc.org/github.com/Teamwork/httperr)
+[![Build Status](https://travis-ci.org/Teamwork/httperr.svg?branch=master)](https://travis-ci.org/Teamwork/httperr)
+[![Codecov](https://img.shields.io/codecov/c/github/Teamwork/httperr.svg?style=flat)](https://codecov.io/gh/Teamwork/httperr)
+[![GoDoc](https://godoc.org/github.com/Teamwork/httperr?status.svg)](http://godoc.org/github.com/Teamwork/httperr)
 
 # httperr
 

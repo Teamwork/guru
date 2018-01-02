@@ -89,3 +89,23 @@ func TestFormatWrapped(t *testing.T) {
 		})
 	}
 }
+
+func TestStatusCode(t *testing.T) {
+	cases := []struct {
+		in   error
+		want int
+	}{
+		{errors.New("foo"), 0},
+		{New(42, "foo"), 42},
+		{Wrap(666, New(42, "foo"), "bar"), 666},
+	}
+
+	for i, tc := range cases {
+		t.Run(fmt.Sprintf("%v", i), func(t *testing.T) {
+			out := StatusCode(tc.in)
+			if out != tc.want {
+				t.Errorf("\nout:  %#v\nwant: %#v\n", out, tc.want)
+			}
+		})
+	}
+}
