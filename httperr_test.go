@@ -109,3 +109,28 @@ func TestStatusCode(t *testing.T) {
 		})
 	}
 }
+
+func TestUserError(t *testing.T) {
+	cases := []struct {
+		in   error
+		want bool
+	}{
+		{nil, false},
+		{errors.New("asd"), false},
+		{New(500, "asd"), false},
+		{New(399, "asd"), false},
+		{New(0, "asd"), false},
+
+		{New(400, "asd"), true},
+		{New(499, "asd"), true},
+	}
+
+	for i, tc := range cases {
+		t.Run(fmt.Sprintf("%v", i), func(t *testing.T) {
+			out := UserError(tc.in)
+			if out != tc.want {
+				t.Errorf("\nout:  %#v\nwant: %#v\n", out, tc.want)
+			}
+		})
+	}
+}
