@@ -138,3 +138,13 @@ func Wrapf(status int, err error, msg string, args ...interface{}) error {
 		stack:  callers(),
 	}
 }
+
+// UserError reports if this error is a user error (i.e. in the 4xx range).
+func UserError(err error) bool {
+	if err == nil {
+		return false
+	}
+
+	code := StatusCode(err)
+	return code >= 400 && code <= 499
+}
