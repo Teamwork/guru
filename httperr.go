@@ -4,6 +4,7 @@ package httperr
 import (
 	"fmt"
 
+	"github.com/labstack/echo"
 	"github.com/pkg/errors"
 )
 
@@ -88,6 +89,9 @@ func StatusCode(err error) int {
 	for {
 		if sc, ok := err.(statusCoder); ok {
 			return sc.StatusCode()
+		}
+		if echoerr, ok := err.(*echo.HTTPError); ok {
+			return echoerr.Code
 		}
 		if cause, ok := err.(causer); ok {
 			err = cause.Cause()
