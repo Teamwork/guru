@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"testing"
+
+	"github.com/labstack/echo"
 )
 
 func TestFormatWithStatus(t *testing.T) {
@@ -97,7 +99,7 @@ func TestStatusCode(t *testing.T) {
 	}{
 		{errors.New("foo"), 0},
 		{New(42, "foo"), 42},
-		{Wrap(666, New(42, "foo"), "bar"), 666},
+		{echo.NewHTTPError(400, ""), 400},
 	}
 
 	for i, tc := range cases {
