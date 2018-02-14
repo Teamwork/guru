@@ -1,10 +1,10 @@
 language: go
-go_import_path: github.com/teamwork/httperr
 go:
   - 1.9.x
-cache:
-  directories:
-    - $HOME/gopath/pkg
+go_import_path: github.com/teamwork/httperr
+notifications:
+  email: false
+  webhooks: http://tw-bot.teamworkops.com:8182/travis/buildstatus
 install:
   - ./bin/setup-travis
 script:
