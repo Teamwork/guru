@@ -1,4 +1,4 @@
-package httperr
+package guru
 
 import (
 	"fmt"
@@ -6,8 +6,6 @@ import (
 
 	"github.com/pkg/errors"
 )
-
-/* The contents of this file is borrowed from github.com/pkg/errors */
 
 // stack represents a stack of program counters.
 type stack []uintptr
