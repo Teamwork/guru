@@ -15,3 +15,24 @@ find . -name '*.go' -and -not -path './vendor/*' -exec goimports -w {} +
 
 [ -d "./vendor/github.com/teamwork/httperr" ] && \
 	git mv "vendor/github.com/teamwork/httperr" "vendor/github.com/teamwork/guru"
+
+if [ -f Gopkg.toml ]; then
+	sed -i \
+		's!github.com/teamwork/httperr!github.com/teamwork/guru!g' \
+		Gopkg.toml Gopkg.lock
+	dep ensure -update github.com/teamwork/guru
+fi
+
+[ -d "./vendor/github.com/teamwork/echoutil" ] && \
+	dep ensure -update github.com/teamwork/echoutil
+
+[ -d "./vendor/github.com/teamwork/validate" ] && \
+	dep ensure -update github.com/teamwork/validate
+
+git checkout -b guru
+git add -A
+git commit -a -m "httperr -> guru
+
+Rename the httperr package to guru.
+https://github.com/Teamwork/guru/pull/14
+"
