@@ -1,4 +1,4 @@
-package httperr
+package guru
 
 import (
 	"fmt"
@@ -56,10 +56,10 @@ func TestStackTraceFormat(t *testing.T) {
 		stackTrace()[:2],
 		"%+v",
 		"\n" +
-			"github.com/teamwork/httperr.stackTrace\n" +
-			"\t.+/github.com/teamwork/httperr/stack_test.go:37\n" +
-			"github.com/teamwork/httperr.TestStackTraceFormat\n" +
-			"\t.+/github.com/teamwork/httperr/stack_test.go:56",
+			"github.com/teamwork/guru.stackTrace\n" +
+			"\t.+/github.com/teamwork/guru/stack_test.go:37\n" +
+			"github.com/teamwork/guru.TestStackTraceFormat\n" +
+			"\t.+/github.com/teamwork/guru/stack_test.go:56",
 	}, {
 		stackTrace()[:2],
 		"%#v",

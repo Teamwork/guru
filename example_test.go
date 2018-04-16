@@ -1,10 +1,13 @@
-[![Build Status](https://travis-ci.org/Teamwork/guru.svg?branch=master)](https://travis-ci.org/Teamwork/guru)
-[![Codecov](https://img.shields.io/codecov/c/github/Teamwork/guru.svg?style=flat)](https://codecov.io/gh/Teamwork/guru)
-[![GoDoc](https://godoc.org/github.com/Teamwork/guru?status.svg)](http://godoc.org/github.com/Teamwork/guru)
+package guru_test
 
-The guru package allows adding a Guru Meditation Number to errors:
+import (
+	"fmt"
+	"net/http"
 
-```go
+	"github.com/pkg/errors"
+	"github.com/teamwork/guru"
+)
+
 // Error constants.
 const (
 	CodeFruitOverflow = iota + 1
@@ -40,7 +43,3 @@ func Example() {
 	err = guru.WithCode(2, err)
 	fmt.Println(guru.Code(err)) // 2
 }
-```
-
-guru is built on top of [github.com/pkg/errors](https://github.com/pkg/errors);
-all errors that guru returns are github.com/pkg/errors.
