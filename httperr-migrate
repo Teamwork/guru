@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Migrate from the old "httperr" API.
+#
+
+find . -name '*.go' -and -not -path './vendor/*' -exec sed -i \
+	-e 's!github.com/teamwork/httperr!github.com/teamwork/guru!g;' \
+	-e 's/httperr\.WithStatus/guru.WithCode/g;' \
+	-e 's/httperr\.StatusCode/guru.Code/g;' \
+	-e 's/httperr\.UserError/guru.HTTPUserError/g;' \
+	-e 's/httperr\./guru./g;' \
+	{} +
+
+find . -name '*.go' -and -not -path './vendor/*' -exec goimports -w {} +
+
+[ -d "./vendor/github.com/teamwork/httperr" ] && \
+	git mv "vendor/github.com/teamwork/httperr" "vendor/github.com/teamwork/guru"
