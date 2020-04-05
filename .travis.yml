@@ -9,7 +9,7 @@ cache:
   directories:
     - $HOME/.cache/go-build
 install:
-script:
+script: |
   export GO111MODULE=on
   go test -race \
     -coverprofile=coverage.txt \
