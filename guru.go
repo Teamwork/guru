@@ -30,7 +30,7 @@ type withCode struct {
 
 func (e *withCode) Cause() error                 { return e.error }
 func (e *withCode) Code() int                    { return e.code }
-func (e withCode) Format(s fmt.State, verb rune) { fmt.Fprintf(s, "error %v: %v", e.code, e.error) }
+func (e withCode) Format(s fmt.State, verb rune) { fmt.Fprintf(s, "error %v: %v", e.code, e.error) } // nolint: errcheck
 
 type wrapped struct {
 	msg  string
@@ -43,9 +43,9 @@ func (e *wrapped) Error() string { return e.msg }
 func (e *wrapped) Cause() error  { return e.error }
 func (e *wrapped) Code() int     { return e.code }
 func (e wrapped) Format(s fmt.State, verb rune) {
-	fmt.Fprintf(s, "error %v: %v", e.code, e.error)
+	fmt.Fprintf(s, "error %v: %v", e.code, e.error) // nolint: errcheck
 	if e.msg != "" {
-		fmt.Fprintf(s, ": %v", e.msg)
+		fmt.Fprintf(s, ": %v", e.msg) // nolint: errcheck
 	}
 }
 
