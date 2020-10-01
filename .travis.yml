@@ -11,6 +11,8 @@ cache:
 install:
 script: |
   export GO111MODULE=on
+  GO111MODULE=off go get github.com/golangci/golangci-lint/cmd/golangci-lint
+  golangci-lint run ./...
   go test -race \
     -coverprofile=coverage.txt \
     -coverpkg=./... \
