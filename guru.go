@@ -39,7 +39,7 @@ type wrapped struct {
 	*stack
 }
 
-func (e *wrapped) Error() string { return e.msg }
+func (e *wrapped) Error() string { return fmt.Sprintf("%s: %s", e.msg, e.error.Error()) }
 func (e *wrapped) Cause() error  { return e.error }
 func (e *wrapped) Code() int     { return e.code }
 func (e wrapped) Format(s fmt.State, verb rune) {
